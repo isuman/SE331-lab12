@@ -4,14 +4,13 @@ import camt.cbsd.config.json.View;
 import camt.cbsd.entity.security.Authority;
 import camt.cbsd.entity.security.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
-import lombok.*;
-import org.hibernate.annotations.*;
-import org.hibernate.annotations.CascadeType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +21,7 @@ import java.util.Optional;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor(suppressConstructorProperties = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 public class Student {
@@ -43,7 +42,7 @@ public class Student {
     String description;
     @ManyToMany
     List<Course> enrolledCourse = new ArrayList<>();
-    @JsonManagedReference
+
     @OneToOne
     User user;
     @JsonView(View.Login.class)

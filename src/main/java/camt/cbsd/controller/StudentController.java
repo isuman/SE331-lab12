@@ -1,8 +1,10 @@
 package camt.cbsd.controller;
 
+import camt.cbsd.config.json.View;
+import camt.cbsd.entity.RegisterEntity;
 import camt.cbsd.entity.Student;
 import camt.cbsd.services.StudentService;
-import camt.cbsd.services.StudentServiceImpl;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -11,24 +13,18 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.QueryParam;
-
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -132,4 +128,16 @@ public class StudentController {
         }
 
     }
+
+    @JsonView(View.Login.class)
+    @PostMapping("/studentAuthen")
+    public Student uploadStudentAuthen(@RequestBody RegisterEntity user) {
+
+        Student student = studentService.addStudent(user);
+        return student;
+
+    }
+
+
+
 }

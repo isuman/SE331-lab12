@@ -7,7 +7,6 @@ import camt.cbsd.entity.Student;
 import camt.cbsd.entity.security.Authority;
 import camt.cbsd.entity.security.AuthorityName;
 import camt.cbsd.entity.security.User;
-import camt.cbsd.repository.StudentRepository;
 import camt.cbsd.security.repository.AuthorityRepository;
 import camt.cbsd.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +15,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
-import java.beans.Transient;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;

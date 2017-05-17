@@ -21,6 +21,8 @@ import {CourseServerService} from './service/course-server.service';
 import {CourseRoutingModule} from './course/course-routing.module';
 import {LoginComponent} from './login/login.component';
 import {AuthenticationService} from './service/authentication.service';
+import { StudentAddComponent } from './students/student-add/student-add.component';
+import {SelectModule} from 'ng2-select';
 
 
 @NgModule({
@@ -33,10 +35,11 @@ import {AuthenticationService} from './service/authentication.service';
     CourseListComponent,
     AddCourseComponent,
     ListCourseComponent,
-    LoginComponent
+    LoginComponent,
+    StudentAddComponent
   ],
   imports: [BrowserModule, FormsModule, HttpModule,
-    StudentRoutingModule, CourseRoutingModule,AppRoutingModule],
+    StudentRoutingModule, CourseRoutingModule,AppRoutingModule, SelectModule],
   bootstrap: [AppComponent],
   providers: [{provide: StudentsDataService, useClass: StudentsDataServerService},
     // {provide: LocationStrategy, useClass: HashLocationStrategy},
